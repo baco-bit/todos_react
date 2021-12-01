@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Swal from 'sweetalert2';
 import { v4 as uuidv4 } from 'uuid';
 import { useFormulario } from "../Hooks/useFormulario";
@@ -9,13 +8,12 @@ const Formulario = ({agregarTodo}) => {
 
         nombre: '',
         descripcion: '',
-        estado: '',
         prioridad: false,
     };
 
     const [inputs, handleChange, reset] = useFormulario(initialState)
 
-    const {nombre, descripcion, estado, prioridad} = inputs
+    const {nombre, descripcion, prioridad} = inputs
 
     const handleSubmit = (e) => {
          e.preventDefault()
@@ -45,7 +43,6 @@ const Formulario = ({agregarTodo}) => {
         agregarTodo({
             nombre,
             descripcion,
-            estado: estado === 'Pendiente' ? false : true,
             prioridad,
             id: uuidv4(),
         });
@@ -75,29 +72,6 @@ const Formulario = ({agregarTodo}) => {
                     onChange={handleChange}
                 />
 
-                <select 
-                name="estado" 
-                className="form-control mb-2"
-                value={estado}
-                onChange={handleChange}
-                >
-                    <option value="Pendiente">Pendiente</option>
-                    <option value="Finalizado">Finalizado</option>
-                </select>
-
-                <div className="form-check">
-                    <input
-                        id="flexCheckDefault"
-                        className="form-check-input"
-                        type="checkbox"
-                        name="prioridad"
-                        checked={prioridad}
-                        onChange={handleChange}
-                    />
-                    <label className="form-check-label" htmlFor="flexCheckDefault">
-                        Dar Prioridad
-                    </label>
-                </div>
                 <button type="submit" className="btn btn-primary mt-2">Agregar</button>
             </form>
         </>

@@ -1,11 +1,11 @@
-const Todo = ({todo, eliminarTodo, editarTodo}) => {
+const Todo = ({todo, eliminarTodo}) => {
 
-    const {id, nombre, descripcion, estado, prioridad} = todo
+    const {id, nombre, descripcion} = todo
 
     return (
         <li className="list-group-item d-flex justify-content-between align-items-start">
             <div className="ms-2 me-auto">
-                <div className="fw-bold">{nombre} ({estado ? 'Finalizado' : 'Pendiente'})</div>
+                <div className="fw-bold">{nombre}</div>
                 <p>{descripcion}</p>
                 <button 
                 className="btn btn-danger me-2" 
@@ -13,17 +13,7 @@ const Todo = ({todo, eliminarTodo, editarTodo}) => {
                 >
                     Eliminar
                 </button>
-
-                <button 
-                className="btn btn-info"
-                onClick={() => editarTodo(id)}
-                >
-                    Editar
-                </button>
             </div>
-            <span className="badge bg-danger rounded-pill">
-                {prioridad && 'Dar Prioridad'}
-            </span>
         </li>
     );
 };

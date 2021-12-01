@@ -25,14 +25,6 @@ const TodoList = () => {
         setTodos((old) => old.filter(item => item.id !== id))
     }
 
-    const editarTodo = (id) => {
-        
-        const editarTodos = todos.map(item => (
-            item.id === id ? {...item, estado: !item.estado} : item
-        ));
-        setTodos(editarTodos)
-    };
-
     return(
         <>
             <Formulario agregarTodo={agregarTodo}/>
@@ -43,7 +35,6 @@ const TodoList = () => {
                         key={item} 
                         todo={item} 
                         eliminarTodo={eliminarTodo} 
-                        editarTodo={editarTodo}
                         />
                     ))
                 }
