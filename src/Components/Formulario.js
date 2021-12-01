@@ -8,12 +8,11 @@ const Formulario = ({agregarTodo}) => {
 
         nombre: '',
         descripcion: '',
-        prioridad: false,
     };
 
     const [inputs, handleChange, reset] = useFormulario(initialState)
 
-    const {nombre, descripcion, prioridad} = inputs
+    const {nombre, descripcion} = inputs
 
     const handleSubmit = (e) => {
          e.preventDefault()
@@ -43,7 +42,6 @@ const Formulario = ({agregarTodo}) => {
         agregarTodo({
             nombre,
             descripcion,
-            prioridad,
             id: uuidv4(),
         });
         reset();
